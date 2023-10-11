@@ -1,0 +1,232 @@
+$primary-color: #ffefe7;
+$secondary-color: #ffdac6;
+$tertiary-color: #babd8d;
+$quaternion-color: #fa9500;
+$primary-text-color: #7c6a0a;
+$font-stack: "IBM Plex Sans", sans-serif;
+$paragraph-size: 1.5em;
+
+@mixin flexCenter($direction, $content, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+}
+
+@mixin buttonStyle {
+  background: none;
+  border-style: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $primary-color;
+  font-family: $font-stack;
+}
+
+nav {
+  // height: 100px;
+  width: auto;
+  @include flexCenter(row, space-between, center);
+  color: $primary-text-color;
+  padding: 0px 15px 0px 45px;
+  p {
+    font-size: $paragraph-size;
+    // padding-left: 30px;
+  }
+  .icons {
+    display: flex;
+    gap: 15px;
+    button {
+      @include buttonStyle;
+    }
+  }
+}
+
+article {
+  width: auto;
+  color: $primary-text-color;
+  // background-color: white;
+  padding: 0px 45px;
+  @include flexCenter(row, space-between, center);
+  .impact-section {
+    @include flexCenter(column, space-evenly, flex-start);
+    column-gap: 15px;
+    padding-top: 50px;
+    gap: 25px;
+  }
+  h1 {
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+  }
+  p {
+    font-size: $paragraph-size;
+  }
+  button {
+    @include buttonStyle;
+    width: 12vw;
+    padding: 20px;
+    background-color: $quaternion-color;
+    border-radius: 35px;
+    color: white;
+    font-size: 1em;
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+  }
+  img {
+    width: 25vw;
+    border-radius: 19px;
+  }
+}
+
+section {
+  width: auto;
+  height: auto;
+  // background-color: pink;
+  padding: 60px;
+  h2 {
+    color: $primary-text-color;
+    font-size: 2em;
+  }
+  .healthcare {
+    padding-bottom: 60px;
+    h2 {
+      font-weight: 300;
+      padding-bottom: 60px;
+    }
+    .card-section {
+      @include flexCenter(row, space-evenly, center);
+      width: auto;
+      height: auto;
+      column-gap: 100px;
+      row-gap: 80px;
+      flex-wrap: wrap;
+
+    }
+    .product-card {
+      width: 14vw;
+      height: 45vh;
+      background-color: $secondary-color;
+      color: $primary-text-color;
+      padding: 20px;
+      border-radius: 8px;
+      .icon {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 0 12px 0;
+        svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+      .product-image {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 12vw;
+          height: 30vh;
+          object-fit: cover;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+  .furniture {
+    @extend .healthcare;
+    .product-card {
+      background-color: $tertiary-color;
+      color: white;
+    }
+  }
+}
+
+.main {
+  height: auto;
+  width: 100%;
+}
+
+.about-us {
+  padding-bottom: 60px;
+  h2 {
+    padding-bottom: 60px;
+    font-weight: bold;
+  }
+  .mission-section {
+    // background-color: pink;
+    @include flexCenter(row, space-evenly, center);
+    div {
+      $text-color: #e86424;
+      @include flexCenter(row, space-evenly, center);
+      gap: 40px;
+      width: 30vw;
+      color: $text-color;
+      img {
+        object-fit: contain;
+      }
+      p {
+        text-align: center;
+        font-size: $paragraph-size;
+      }
+    }
+  }
+}
+
+.gallery {
+  h2 {
+    padding-bottom: 60px;
+    font-weight: bold;
+  }
+  .gallery-images {
+    @include flexCenter(row, space-between, center);
+    img {
+      width: 28vw;
+      height: 45vh;
+      object-fit: cover;
+      object-position: 5px 35%;
+      border-radius: 16px;
+      &:hover {
+        transform: scale(1.1);
+        transform-origin: center; /* Centrar el punto de origen */
+        transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Agregar transiciones para todo */
+      }
+    }
+  }
+}
+
+.location{
+  $text-color: #e86424;
+  color: $text-color;
+  h2{
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+  .map{
+    @include flexCenter(row, center, center);
+    padding-bottom:50px;
+  }
+  h3,p{
+    font-size: $paragraph-size;
+  }
+}
+
+footer {
+  background-color: $quaternion-color;
+  height: auto;
+  width: 100%;
+  padding: 40px;
+  color: white;
+  .social-media{
+    @include flexCenter(row, center, center);
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+}
